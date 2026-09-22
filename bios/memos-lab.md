@@ -24,7 +24,5 @@ I want to explore how data can be used to improve the monitoring and analysis of
 
 By the end of week 1, I want to demonstrate that i can confidently use Git and GitHub to create branches, make commits, and push my work to a remote repository. 
 
-&#x20;
-
 
 
