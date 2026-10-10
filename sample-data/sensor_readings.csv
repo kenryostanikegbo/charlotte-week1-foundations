@@ -1,0 +1,7 @@
+timestamp,sensor_id,sensor_type,value,unit
+2025-10-07 08:00:00,S001,temperature,23.4,C
+2025-10-07 08:00:00,S002,humidity,65.2,%
+2025-10-07 08:00:00,S003,pressure,1013.25,hPa
+2025-10-07 08:05:00,S001,temperature,23.6,C
+2025-10-07 08:05:00,S002,humidity,64.8,%
+2025-10-07 08:05:00,S003,pressure,1013.30,hPa
