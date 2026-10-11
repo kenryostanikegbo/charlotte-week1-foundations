@@ -1,60 +1,21 @@
-# Charlotte Projects — Week 1 Digital Foundations
+# Week 1 - Git, AWS CLI and S3 Data Lake
 
-This repository supports Week 1 of the Charlotte Projects
-Data Analytics & Machine Learning Training Programme.
+## Prerequisites
+- Git and AWS CLI version 2 are prerequisites.
 
-## Week 1 Topics
+## Provisioning
+- The default CLI profile is `training`.
+- The script is run with `./scripts/create_s3_data_lake.sh`.
 
-- Git and GitHub
-- Branching and Pull Requests
-- Developer environment setup
-- AWS CLI
-- Amazon S3
-- Cloud storage concepts
+## Data Ingestion and Lifecycle
+- Verified upload: `aws s3 ls "s3://$BUCKET_NAME/raw/pressure/2026/10/06/" --profile training`
+- The lifecycle rule is configured for object age. A newly uploaded object is not yet 30 or 180 days old, so no transition happens immediately.
+- raw/ objects transition to Standard-IA after 30 days and Glacier Flexible Retrieval after 180 days.
 
-## Repository Structure
+## Security and Retention
+- S3 Block Public Access is enabled.
+- Credentials and private SSH keys must never be committed.
+- The training expiration is approximately seven years.
 
-- `bios/` — trainee Markdown profiles
-- `aws/` — AWS CLI and S3 scripts
-- `docs/` — supporting documentation
-
-## Git Workflow
-
-We use the following branch structure:
-
-`main → develop → feature branches`
-
-Trainees should not make changes directly on `main`.
-
-## Week 1 Learning Workflow
-
-1. Clone the repository.
-2. Switch to the `develop` branch.
-3. Create a feature branch.
-4. Make your assigned change.
-5. Stage and commit the change.
-6. Push your feature branch to GitHub.
-7. Open a Pull Request into `develop`.
-8. Request review.
-9. Merge only after approval.
-
-## Security
-
-Never commit:
-
-- Passwords
-- AWS access keys
-- AWS secret access keys
-- SSH private keys
-- API tokens
-- Other credentials or sensitive information
-
-## Class 2 Practical
-
-Each trainee will create a Markdown profile inside the `bios/` directory using a feature branch.
-
-Example:
-
-`feature/john-bio`
-
-The completed change will be submitted through a Pull Request into `develop`.
+## Verification
+- `aws s3api get-bucket-lifecycle-configuration --bucket $BUCKET_NAME --profile training`
